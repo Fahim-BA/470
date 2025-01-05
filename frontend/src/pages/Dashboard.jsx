@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
     const [jobs, setJobs] = useState([]);
@@ -100,6 +101,8 @@ const Dashboard = () => {
                         <li key={application._id} className="text-lg text-gray-800 mb-2">
                             <p>Job Title: {application.job?.title}</p>
                             <p>Applicant: {application.name}</p>
+                            <p>Email: {application.email}</p>
+                            <p>Resume: <Link to={`/resume/${application._id}`} target="_blank" rel="noopener noreferrer">View Resume</Link></p>
                             <p>Status: {application.status}</p>
                             <button
                                 onClick={() => handleAccept(application._id)}

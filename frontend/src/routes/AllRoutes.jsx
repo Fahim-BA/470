@@ -10,6 +10,8 @@ import JobMain from '../pages/JobMain'
 import JobApplication from '../pages/JobApplication';
 import ApplicationStatus from '../pages/ApplicationStatus';
 import Dashboard from '../pages/Dashboard';
+import ResumeView from '../pages/ResumeView';
+
 
 export default function AllRoutes() {
     return (
@@ -25,6 +27,7 @@ export default function AllRoutes() {
                 <Route path='/apply/:jobId' element={<JobApplication />} />
                 <Route path='/application-status' element={<ApplicationStatus />} />
                 <Route path='/dashboard' element={<Dashboard />} />
+                <Route path='/resume/:id' element={<ResumeView />} />
             </Route>
         </Routes>
     )

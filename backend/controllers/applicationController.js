@@ -53,3 +53,20 @@ export const denyApplication = async (req, res) => {
         res.status(500).json({ success: false, message: 'Failed to deny application', error: error.message });
     }
 };
+
+// Get resume text by application ID
+export const getResume = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const application = await Application.findById(id);
+
+        if (!application) {
+            return res.status(404).json({ success: false, message: 'Application not found' });
+        }
+
+        res.status(200).json({ success: true, resumeText: application.resume });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Failed to fetch resume', error: error.message });
+    }
+};
