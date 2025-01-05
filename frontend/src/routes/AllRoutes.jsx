@@ -12,12 +12,12 @@ import ApplicationStatus from '../pages/ApplicationStatus';
 import Dashboard from '../pages/Dashboard';
 import ResumeView from '../pages/ResumeView';
 
-
 export default function AllRoutes() {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/analytics" element={<Analytics />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path='/signin' element={<SignIn />} />
             <Route path='/signup' element={<SignUp />} />
             <Route element={<ProtectedRoutes />}>

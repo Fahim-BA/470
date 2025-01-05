@@ -81,41 +81,50 @@ const Dashboard = () => {
     };
 
     return (
-        <div>
-            <div className="bg-white shadow-md rounded-lg p-4">
-                <h2 className="text-xl font-bold text-gray-800 mb-2">Total Jobs</h2>
-                <p className="text-gray-700 text-lg">{jobs.length}</p>
-            </div>
-            <div className="bg-white shadow-md rounded-lg p-4">
-                <h2 className="text-xl font-bold text-gray-800 mb-2">Total Users</h2>
-                <p className="text-gray-700 text-lg">{users.length}</p>
-            </div>
-            <div className="bg-white shadow-md rounded-lg p-4">
-                <h2 className="text-xl font-bold text-gray-800 mb-2">Total Applications</h2>
-                <p className="text-gray-700 text-lg">{applicationCount}</p>
+        <div className="p-6 bg-gray-50 min-h-screen">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                <div className="bg-white shadow-lg rounded-lg p-6 text-center">
+                    <h2 className="text-lg font-semibold text-gray-700">Total Jobs</h2>
+                    <p className="text-2xl font-bold text-gray-900">{jobs.length}</p>
+                </div>
+                <div className="bg-white shadow-lg rounded-lg p-6 text-center">
+                    <h2 className="text-lg font-semibold text-gray-700">Total Users</h2>
+                    <p className="text-2xl font-bold text-gray-900">{users.length}</p>
+                </div>
+                <div className="bg-white shadow-lg rounded-lg p-6 text-center">
+                    <h2 className="text-lg font-semibold text-gray-700">Total Applications</h2>
+                    <p className="text-2xl font-bold text-gray-900">{applicationCount}</p>
+                </div>
             </div>
             <div>
-                <h1 className="text-2xl font-bold mt-4 mb-2">Applications</h1>
-                <ul className="list-disc pl-5">
+                <h1 className="text-3xl font-bold text-gray-800 mb-4">Applications</h1>
+                <ul className="space-y-4">
                     {applications.map(application => (
-                        <li key={application._id} className="text-lg text-gray-800 mb-2">
-                            <p>Job Title: {application.job?.title}</p>
-                            <p>Applicant: {application.name}</p>
-                            <p>Email: {application.email}</p>
-                            <p>Resume: <Link to={`/resume/${application._id}`} target="_blank" rel="noopener noreferrer">View Resume</Link></p>
-                            <p>Status: {application.status}</p>
-                            <button
-                                onClick={() => handleAccept(application._id)}
-                                className="bg-green-500 text-white px-4 py-2 rounded-lg mr-2"
-                            >
-                                Accept
-                            </button>
-                            <button
-                                onClick={() => handleDeny(application._id)}
-                                className="bg-red-500 text-white px-4 py-2 rounded-lg"
-                            >
-                                Deny
-                            </button>
+                        <li key={application._id} className="bg-white shadow-md rounded-lg p-6 border border-gray-200">
+                            <p className="text-gray-700"><strong>Job Title:</strong> {application.job?.title}</p>
+                            <p className="text-gray-700"><strong>Applicant:</strong> {application.name}</p>
+                            <p className="text-gray-700"><strong>Email:</strong> {application.email}</p>
+                            <p className="text-gray-700">
+                                <strong>Resume:</strong>{' '}
+                                <Link to={`/resume/${application._id}`} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
+                                    View Resume
+                                </Link>
+                            </p>
+                            <p className="text-gray-700"><strong>Status:</strong> {application.status}</p>
+                            <div className="mt-4 flex gap-2">
+                                <button
+                                    onClick={() => handleAccept(application._id)}
+                                    className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg"
+                                >
+                                    Accept
+                                </button>
+                                <button
+                                    onClick={() => handleDeny(application._id)}
+                                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
+                                >
+                                    Deny
+                                </button>
+                            </div>
                         </li>
                     ))}
                 </ul>
